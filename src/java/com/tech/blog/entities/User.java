@@ -18,11 +18,12 @@ public class User {
     private String password;
     private String gender;
     private String about;
+    private String image;
     private Timestamp created_at;
     private Timestamp updated_at;
     private Timestamp deleted_at;
 
-    public User(long id, String name, String email, String password, String gender, String about, Timestamp created_at, Timestamp updated_at, Timestamp deleted_at) {
+    public User(long id, String name, String email, String password, String gender, String about, String image, Timestamp created_at, Timestamp updated_at, Timestamp deleted_at) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -43,6 +44,14 @@ public class User {
         this.password = password;
         this.gender = gender;
         this.about = about;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public long getId() {

@@ -1,6 +1,11 @@
 
 
+<%@page import="com.tech.blog.entities.Message"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Message msg = (Message) session.getAttribute("message");
+    session.removeAttribute("message");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,24 +40,24 @@
                                 <br>
                                 <p>Login here</p>
                             </div>
+                            <% if (msg != null) {%>
 
-<!--                            <div class="alert alert-success" role="alert">
-                              
-                            </div> -->
-
-
+                            <div class="alert <%= msg.getCssClass()%>" role="alert">
+                                <%= msg.getContent()%>
+                            </div> 
+                            <% }%>
 
 
                             <div class="card-body">
                                 <form action="LoginServlet" method="post">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email address</label>
-                                        <input name="email" required type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input name="email"  type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Password</label>
-                                        <input name="password" required type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <input name="password"  type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                     </div>
 
                                     <div class="container text-center">
